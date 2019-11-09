@@ -1,6 +1,6 @@
 # BitFinance´s - ICO/STO Platform
 
-The BitFinance ICO (Initial Coin Offering) Platform allows you to run a secure and flexible web-based application that enables buyers to purchase your tokens before the point of initial allocation. Your tokens are purchased (or earned) by buyers when they contribute in ETH, EOS, BTC or BFN while the ICO/STOs is live. For more information on the workflow and the components involved with the ICO/STO Platform, please refer to the ICO/STO Platform Overview document.
+The BitFinance´s Coin Offering Platform allows you to run a secure and flexible web-based application that enables buyers to purchase your tokens before the point of initial allocation. Your tokens are purchased (or earned) by buyers when they contribute in ETH, EOS, BTC or BFN while the ICO/STOs is live. For more information on the workflow and the components involved with the ICO/STO Platform, please refer to the ICO/STO Platform Overview document. BitFinance is a subsidiary of the corporation.
 
 #
 
