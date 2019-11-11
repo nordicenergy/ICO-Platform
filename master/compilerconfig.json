@@ -1,0 +1,30 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/dashboard-index.css",
+    "inputFile": "wwwroot/css/dashboard-index.less"
+  },
+  {
+    "outputFile": "wwwroot/css/admin-edit.css",
+    "inputFile": "wwwroot/css/admin-edit.less"
+  },
+  {
+    "outputFile": "wwwroot/css/dashboard-enabletwofactor.css",
+    "inputFile": "wwwroot/css/dashboard-enabletwofactor.less"
+  },
+  {
+    "outputFile": "wwwroot/css/site.css",
+    "inputFile": "wwwroot/css/site.less"
+  },
+  {
+    "outputFile": "wwwroot/css/manage-index.css",
+    "inputFile": "wwwroot/css/manage-index.less"
+  },
+  {
+    "outputFile": "wwwroot/css/crypto-icons.css",
+    "inputFile": "wwwroot/css/crypto-icons.less"
+  },
+  {
+    "outputFile": "wwwroot/css/register-index.css",
+    "inputFile": "wwwroot/css/register-index.less"
+  }
+]
