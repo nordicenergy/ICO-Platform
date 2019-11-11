@@ -1,0 +1,41 @@
+﻿.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard {
+    .address-section {
+        .address {
+            font-size: calc(3.2vw);
+
+            @media screen and (min-width: 992px) {
+                font-size: 30px;
+            }
+        }
+
+        .changelly {
+            margin-bottom:17px;
+        }
+    }
+
+    .transactions {
+        table {
+            td.id {
+                max-width: 500px;
+
+                @media screen and (max-width: 992px) {
+                    max-width: 110px;
+                }
+            }
+        }
+    }
+
+    .ico-setup {
+        .alert {
+            .btn-primary {
+                margin-top: 15px;
+            }
+        }
+    }
+}

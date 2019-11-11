@@ -1,0 +1,22 @@
+﻿.admin-edit .img-thumbnail {
+  margin-bottom: 15px;
+}
+.admin-edit form textarea {
+  height: 90px;
+}
+.admin-edit input.date {
+  cursor: pointer;
+}
+.admin-edit .btn {
+  background-color:  #cc9900;
+}
+.admin-edit .bonus-periods table thead th.date {
+  width: 33%;
+}
+.admin-edit .bonus-periods table thead th.action {
+  width: 40px;
+}
+.admin-edit .bonus-periods table tbody input.date.invalid,
+.admin-edit .bonus-periods table tbody input.date.invalid:focus {
+  border-color: #cf9b00 !important;
+}

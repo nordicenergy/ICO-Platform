@@ -1,0 +1,11 @@
+﻿.authenticator .step-3 .ibox-content {
+  min-height: 238px;
+}
+.authenticator .step-2 .media .media-body {
+  display: table-cell;
+}
+.authenticator .step-2 .media .media-body .manual-code {
+  font-weight: bold;
+  word-break: break-all;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,41 @@
+﻿.admin-edit {
+    .img-thumbnail {
+        margin-bottom: 15px;
+    }
+
+    form {
+        textarea {
+            height: 90px;
+        }
+    }
+
+    input.date {
+        cursor: pointer;
+    }
+
+    .btn {
+        background-color:  #cc9900;
+    }
+
+    .bonus-periods {
+        table {
+            thead {
+                th.date {
+                    width: 33%;
+                }
+
+                th.action {
+                    width: 40px;
+                }
+            }
+
+            tbody {
+                input.date {
+                    &.invalid, &.invalid:focus {
+                        border-color: #cc9900 !important;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,586 @@
+﻿/* This file included on base layout so only common css will be here */
+* {
+  margin: 0;
+}
+html {
+  font-family: 'Source Sans Pro', sans-serif;
+  background: #EDF0F7;
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+.form-group .field-validation-error {
+  display: block;
+  margin-top: 5px;
+  color: #b99700;
+}
+.form-group .input-error-state {
+  border-color: #d61535 !important;
+  color: #e51739;
+}
+.form-group .input-validation-error {
+  border-color: #d61535 !important;
+  color: #e51739;
+}
+.form-group.has-error .form-control,
+.form-group.has-error .form-control:focus {
+  border-color: #d61535 !important;
+  color: #e51739;
+}
+.form-group.has-error .checkbox,
+.form-group.has-error .checkbox a {
+  color: #e51739;
+}
+.login .form-group {
+  margin-bottom: 40px;
+}
+.login .form-group input {
+  margin-bottom: 0px !important;
+}
+.login .form-group .field-validation-error {
+  position: absolute;
+  right: 15px;
+  font-size: 13px;
+  font-weight: 600;
+  float: right;
+}
+.register {
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-top: 27px;
+}
+.register .form-group {
+  margin-bottom: 30px;
+}
+.register .form-group input {
+  margin-bottom: 0px !important;
+}
+.register .form-group.confirm-password {
+  margin-bottom: 15px;
+}
+.register .form-group.terms-conditions {
+  margin-bottom: 35px;
+}
+.register .form-group .field-validation-error {
+  position: relative;
+  top: -5px;
+  font-size: 13px;
+  font-weight: 600;
+  float: right;
+}
+.register.btn {
+  margin-top: 0px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: none;
+  border:  #997300 1px solid;
+  color:  #cc9900;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+.register.btn:hover {
+  color: #fff;
+}
+.validation-summary-valid.alert {
+  display: none;
+}
+.validation-summary-errors ul {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+.alert hr {
+  margin-top: 15px;
+}
+.media .media-body {
+  display: table-cell;
+}
+.block {
+  display: block !important;
+  float: none !important;
+}
+.error-page {
+  margin-top: 50px;
+}
+.error-page h1 {
+  font-size: 40px;
+}
+.container-padded {
+  padding: 0 30px 0 30px;
+}
+h4 {
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+}
+.feature-section {
+  padding-top: 50px;
+  padding-bottom: 150px;
+  background-color: #FAFBFF;
+}
+.feature-section.alternate {
+  background-color: #EDF0F7;
+}
+.feature-section.kyc-section {
+  padding-bottom: 20px;
+}
+.feature-section .feature-panel {
+  padding-bottom: 50px;
+}
+.feature-panel .card-content {
+  padding-top: 45px !important;
+  padding-bottom: 60px !important;
+}
+.feature-panel .card-content .card-title {
+  margin-bottom: 30px;
+}
+.feature-panel .card-content label.card-text {
+  color: #69737d;
+  font-weight: 600;
+}
+.feature-panel .card-content a.btn-flat {
+  text-transform: capitalize;
+  text-decoration: underline;
+}
+.feature-panel .card {
+  margin-bottom: 2.625rem;
+}
+.no-padding {
+  padding: 0;
+}
+th,
+td {
+  padding: 15px;
+  border-radius: 0;
+}
+.wallet-address {
+  font-weight: bold;
+  font-size: 19px;
+}
+.balance {
+  font-weight: bold;
+}
+.balance .integral {
+  font-size: 36px;
+}
+.balance .fraction {
+  font-size: 24px;
+}
+.balance .ticker {
+  font-size: 24px;
+  font-weight: 600;
+}
+.card-text {
+  font-size: 13px;
+}
+.card-title {
+  padding-bottom: 20px;
+}
+.card-icon {
+  font-size: 2.5em;
+}
+.card-content .divider {
+  height: 1px;
+  width: 100%;
+  color: #eee;
+  margin: 35px 0 65px 0;
+}
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #997300 !important;
+  box-shadow: 0 1px 0 0 #997800 !important;
+}
+.brand-color {
+  background-color: #997300 !important;
+}
+.brand-color-text {
+  color: #0000 !important;
+}
+.brand-color-text.lighten-1 {
+  color: #4bdde7 !important;
+}
+.brand-color-box input[type=text]:focus {
+  border-bottom-color: #997300 !important;
+}
+.font-size09 {
+  font-size: 0.937em;
+}
+.grey {
+  background-color: #FAFBFF !important;
+}
+.grey-text {
+  color: #69737D !important;
+}
+.black {
+  background-color: #1E222C !important;
+}
+.black-text {
+  color: #1E222C !important;
+}
+.page-footer {
+  background-color: #EDF0F7;
+  padding-top: 0px !important;
+  height: 20px;
+  margin-bottom: -20px;
+}
+.page-footer .footer-copyright {
+  background-color: #997300;
+}
+.nav-extended {
+  background-image: url('/images/Header_Background_01_teal.png');
+  background-size: 100% 300px;
+  background-repeat: no-repeat;
+  min-height: 300px;
+  background-color: #EDF0F7 !important;
+}
+.nav-extended #manage-menu {
+  min-width: 215px;
+}
+.nav-container-padded {
+  padding: 30px 0px 0px 0px;
+}
+.ico-logo > img {
+  margin-top: 20px;
+  max-height: 150px;
+}
+h1 {
+  font-size: 64px;
+  font-weight: 700;
+}
+h5 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.brand-logo {
+  font-size: 1rem !important;
+  text-transform: capitalize;
+}
+.innerDiv {
+  width: inherit;
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  height: 400px !important;
+  min-height: 400px !important;
+}
+.login-title {
+  font-weight: lighter;
+  font-size: 24px;
+  color: gray;
+  margin-bottom: 50px;
+}
+.register-title {
+  font-weight: lighter;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 45px;
+}
+.register-text {
+  font-size: 13px;
+  color: #ffffff;
+}
+.terms-link {
+  font-style: italic;
+  text-decoration: underline;
+}
+.text-italic {
+  font-style: italic;
+}
+.text-align-right {
+  text-align: right;
+}
+.intro-title {
+  font-weight: bold;
+  font-size: 2em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.intro-text {
+  font-size: 15px;
+  color: #ffffff;
+}
+.intro {
+  padding-right: 30px !important;
+  padding-top: 50px !important;
+}
+.intro p {
+  font-weight: 600;
+}
+.login {
+  padding-left: 10px !important;
+  padding-right: 0px !important;
+}
+.card-forgot-password {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding-left: 0px !important;
+  margin-top: 15px;
+}
+.card-reset-password {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding-left: 0px !important;
+  margin-top: 15px;
+}
+.btn.login {
+  font-weight: normal;
+  font-size: 15px;
+}
+.login input,
+.register input {
+  font-size: 15px;
+}
+.register input {
+  color: #ffffff;
+}
+button.btn.login {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 30px;
+}
+.login div.card {
+  padding-top: 50px;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+  padding-bottom: 65px;
+}
+.login span.forgot-password {
+  font-size: 14px;
+  font-style: italic;
+}
+.login p.forgot-password {
+  text-align: right;
+  margin-bottom: 10px;
+  display: block;
+}
+.login div.password-input {
+  margin-bottom: 50px;
+  margin-top: 0px;
+}
+div.register-card {
+  padding-top: 33px;
+  padding-left: 15px;
+  padding-right: 25px;
+}
+.min-layout {
+  min-height: 900px;
+  padding-top: 100px;
+}
+.fix-col-padding {
+  padding: 0px !important;
+}
+.btn-changelly {
+  position: relative;
+  border: 0;
+  border-radius: 6px 3px 3px 6px !important;
+  border-radius: 4px !important;
+}
+.btn-changelly::after {
+  position: absolute;
+  top: 5px;
+  right: -11px;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  content: "";
+  background: inherit;
+  border: inherit;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-radius: 0 3px 0 0;
+  transform: rotate(45deg);
+  background-color: #997300;
+}
+#burger-menu {
+  width: 200px;
+}
+.red-block-icon {
+  background-color: red;
+  border-radius: 15px;
+  padding: 2px;
+  font-size: 14px;
+}
+.semi-bold {
+  font-weight: 600;
+}
+.text-bold {
+  font-weight: bold;
+}
+.padding-top-10 {
+  padding-top: 10px !important;
+}
+.padding-top-30 {
+  padding-top: 30px !important;
+}
+.content-footer-fix {
+  min-height: 100%;
+  margin-bottom: -20px;
+}
+.content-footer-fix:after {
+  content: "";
+  display: block;
+  height: 20px;
+}
+[type="checkbox"]:checked + span:not(.lever):before {
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+.feature-panel [type="checkbox"]:checked + span:not(.lever):before {
+  border-right: 2px solid #997300;
+  border-bottom: 2px solid #997600;
+}
+.feature-panel [type="checkbox"] + span:not(.lever) > label {
+  font-size: 1em;
+  color: #1E222C;
+}
+[type="checkbox"]:not(:checked) + label:after {
+  border-color: #fff;
+}
+[type="checkbox"] + label:before,
+[type="checkbox"]:not(.filled-in) + label:after {
+  border-color: #fff;
+}
+[type="checkbox"]:checked + label:before {
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+.tooltip-container .tooltip-content {
+  font-size: 0.8em;
+  visibility: hidden;
+  width: auto;
+  background-color: #000;
+  color: #fff;
+  padding: 5px 6px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -50%;
+}
+.tooltip-container .tooltip-content:after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}
+.tooltip-container:hover .tooltip-content {
+  visibility: visible;
+}
+@media only screen and (min-width: 0) {
+  .ico-logo > img {
+    height: 80pt;
+    margin-top: 0px;
+  }
+  .container-padded {
+    padding: 0 0 0 0;
+  }
+  .wallet-address {
+    font-size: 15px;
+  }
+  .balance .integral {
+    font-size: 26px;
+  }
+  #sales-table th,
+  #sales-table td {
+    padding-left: 0px !important;
+    padding-right: 0 !important;
+  }
+  .feature-section .feature-panel {
+    padding-bottom: 10px;
+  }
+  .intro-title {
+    font-size: 1.6em;
+  }
+  h4.media-heading {
+    font-size: 1.25em;
+  }
+}
+@media only screen and (min-width: 0) and (max-width: 600px) {
+  .min-layout {
+    padding-top: 0;
+  }
+  .min-layout div.intro {
+    padding-top: 0 !important;
+  }
+  h1.intro-title {
+    margin-top: 0;
+    text-align: center;
+  }
+  .login div.card {
+    padding-top: 15px;
+    padding-bottom: 5px;
+  }
+  .login-title {
+    margin-bottom: 20px;
+  }
+  .register {
+    margin-top: 15px;
+  }
+  .register-title {
+    margin-bottom: 15px;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  .ico-logo > img {
+    height: 100pt;
+    margin-top: 0px;
+  }
+  .wallet-address {
+    font-size: 15px;
+  }
+  .balance .integral {
+    font-size: 26px;
+  }
+  #sales-table th,
+  #sales-table td {
+    padding-left: 0px !important;
+    padding-right: 0 !important;
+  }
+  .feature-section .feature-panel {
+    padding-bottom: 15px;
+  }
+  .btn-flat {
+    line-height: inherit;
+  }
+  h4.media-heading {
+    font-size: 1.5em;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  .min-layout {
+    padding-top: 0;
+  }
+  .intro {
+    padding: 0;
+    margin-bottom: 15px;
+  }
+  h1.intro-title {
+    margin-top: 0;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1024px) {
+  .min-layout {
+    padding-top: 0;
+  }
+  .intro {
+    padding: 0;
+    margin-bottom: 15px;
+  }
+  h1.intro-title {
+    margin-top: 0;
+  }
+}
