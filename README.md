@@ -26,7 +26,7 @@ The BitFinance Initial Coin Offering Platform (Coindash) allows you to run a sec
 
 - The BitFInance´s Coindash ICO/STO Platform is provided free of charge, overcoming the high costs of existing crowd-funding solutions.
 
-- To deploy the ICO/STO Platform, click the following link to deploy via the Marketplace
+- To deploy the ICO/STO Platform, click the following link to deploy via the BitFinance Marketplace
 
 #
 
