@@ -8,7 +8,7 @@ The BitFinance Coin Offering Platform (coindash) allows you to run a secure and 
 
 - A highly customizable design, which enables you to ensure the ICO site conforms with your unique branding.
 
-- The ability to accept funds in USD, BTC, STRAT and 50+ additional cryptocurrencies via Changelly, a service that enables ICO/STO contributors to pay in many digital currencies.
+- The ability to accept funds in USD, BTC, COINDASH and 50+ additional cryptocurrencies via Changelly, a service that enables ICO/STO contributors to pay in many digital currencies.
 
 - Integration with Onfido’s ‘Know-Your-Customer’ (KYC) service that screens contributors against anti-money laundering watch-lists and undertakes document checks.
 
@@ -23,4 +23,4 @@ The BitFinance Coin Offering Platform (coindash) allows you to run a secure and 
 #
 
 #### Feedback
-For support, questions, or suggestions related to the BitFinance´s ICO/STO Platform, please visit the #ico_general channel on Telegram.
+For support, questions, or suggestions related to the BitFinance´s Coindash ICO/STO Platform, please visit the #ico_general channel on Telegram.
