@@ -1,6 +1,14 @@
 # Coindash - ICO/STO Platform
+By BitFinance
 
-The BitFinance Initial Coin Offering Platform (Coindash) allows you to run a secure and flexible web-based application that enables buyers to purchase your tokens before the point of initial allocation. Your tokens are purchased (or earned) by buyers when they contribute in ETH, EOS, BTC, CDA or BFN while the ICO/STOs is live. For more information on the workflow and the components involved with the ICO/STO Platform, please refer to the ICO/STO Platform Overview document. BitFinance is a subsidiary of the corporation.
+The Coindash ICO (Initial Coin Offering) Platform allows you to run a secure and flexible web-based application that enables buyers to purchase your tokens before the point of initial allocation. The platform has been built from the ground up using C# and the .NET Core.
+
+The Coindash ICO Platform enables buyers to earn a proportion of your tokens by making contributions in either BTC, BFN or Coindash. However, Changelly is also integrated into the ICO Platform, and buyers can use this service to convert fiat currencies and other cryptocurrencies into Coindash seamlessly.
+
+
+#### In addition, the platform is KYC (Know Your Customer) ready and currently supports Onfido integration.
+
+The BitFinance Initial Coin Offering Platform (Coindash) allows you to run a secure and flexible web-based application that enables buyers to purchase your tokens before the point of initial allocation. Your tokens are purchased (or earned) by buyers when they contribute in ETH, EOS, BTC, CDA or BFN while the ICO/STOs is live. For more information on the workflow and the components involved with the ICO/STO Platform, please refer to the ICO/STO Platform Overview document. 
 
 #
 
@@ -16,7 +24,7 @@ The BitFinance Initial Coin Offering Platform (Coindash) allows you to run a sec
 
 - Hierarchical Deterministic (HD), enabling issuers to collect funds securely. This means the funds collected during the ICO are not stored on the server itself.
 
-- The BitFInance´s ICO/STO Platform is provided free of charge, overcoming the high costs of existing crowd-funding solutions.
+- The BitFInance´s Coindash ICO/STO Platform is provided free of charge, overcoming the high costs of existing crowd-funding solutions.
 
 - To deploy the ICO/STO Platform, click the following link to deploy via the Marketplace
 
