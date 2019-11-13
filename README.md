@@ -1,7 +1,7 @@
 # Coindash - ICO/STO Platform
-#####  By BitFinance
 
-The Coindash ICO (Initial Coin Offering) Platform allows you to run a secure and flexible web-based application that enables buyers to purchase your tokens before the point of initial allocation. The platform has been built from the ground up using C# and the .NET Core.
+
+The Coindash ICO (Initial Coin Offering) Platform by BitFinance allows you to run a secure and flexible web-based application that enables buyers to purchase your tokens before the point of initial allocation. The platform has been built from the ground up using C# and the .NET Core.
 
 The Coindash ICO Platform enables buyers to earn a proportion of your tokens by making contributions in either BTC, BFN or Coindash. However, Changelly is also integrated into the ICO Platform, and buyers can use this service to convert fiat currencies and other cryptocurrencies into Coindash seamlessly.
 
