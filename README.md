@@ -1,5 +1,5 @@
 # Coindash - ICO/STO Platform
-By BitFinance
+#####  By BitFinance
 
 The Coindash ICO (Initial Coin Offering) Platform allows you to run a secure and flexible web-based application that enables buyers to purchase your tokens before the point of initial allocation. The platform has been built from the ground up using C# and the .NET Core.
 
