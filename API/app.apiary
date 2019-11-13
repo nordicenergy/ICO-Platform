@@ -1,0 +1,708 @@
+FORMAT: 1A
+HOST: tapi.qbit.ninja
+
+# Coindash
+
+QBit Ninja is an [open source web service API](https://github.com/QBitNinja/QBitNinja) to query the blockchain and for tracking wallets.
+
+There are two public servers:
+* [api.qbit.ninja](http://api.qbit.ninja/) for MainNet
+* [tapi.qbit.ninja](http://api.qbit.ninja/) for TestNet
+
+Those servers are provided freely by Nicolas Dorier (tips appreciated at [15sYbVpRh6dyWycZMwPdxJWD4xbfxReeHe](bitcoin:15sYbVpRh6dyWycZMwPdxJWD4xbfxReeHe)) for the community, and should not be used in production environment, downtime and loss of wallet information should be expected.
+The expectation is that service providers host their own server privately.
+
+QBit Ninja depends on [NBitcoin.Indexer](https://github.com/QBitNinja/QBitNinja) which rely on Microsoft Azure Storage.
+
+C# developers are expected to use the [nuget client package](http://www.nuget.org/packages/QBitninja.Client) instead of developping a wrapper around this API.
+
+The goal of QBit Ninja is to take the heavy lifting of managing balances off the shoulder of application developers, while permitting them not to depend on potentially unreliable and untrusted third party like blockchain.info.
+
+# Group Transactions
+
+Transaction can be retrieved or broadcasted in two format : json or bytes.
+It should be noted that getting information in JSON, will not parse the transaction, but will returns it in hex string, along with additional information. (Previous outputs / confirmations)
+
+## Broadcast a transaction [/transactions]
+### POST [POST]
+
++ Request (application/json)
+
+        "01000000..."
++ Request (application/octet-stream)
+
+        01000000...
+        
+        
++ Response 200
+
+        {
+          "success": true,
+          "error": null
+        }
+        
+    
++ Response 200
+
+        {
+          "success": false,
+          "error": {
+            "errorCode": "INVALID",
+            "reason": "bad-txns-vout-empty"
+          }
+        }
+
+## Retrieve a transaction [/transactions/{tx_id}?format={format}]
+
+### GET [GET]
+
++ Parameters
+    + tx_id (hash) ... ID of the hash of the transaction
+    + format (enum) ... Raw or Json
+
++ Response 200 (application/json)
+
+        {
+          "transaction": "0100000003362c10b042d48378b428d60c5c98d8b8aca7a03e1a2ca1048bfd469934bbda95010000008b483045022046c8bc9fb0e063e2fc8c6b1084afe6370461c16cbf67987d97df87827917d42d022100c807fa0ab95945a6e74c59838cc5f9e850714d8850cec4db1e7f3bcf71d5f5ef0141044450af01b4cc0d45207bddfb47911744d01f768d23686e9ac784162a5b3a15bc01e6653310bdd695d8c35d22e9bb457563f8de116ecafea27a0ec831e4a3e9feffffffffc19529a54ae15c67526cc5e20e535973c2d56ef35ff51bace5444388331c4813000000008b48304502201738185959373f04cc73dbbb1d061623d51dc40aac0220df56dabb9b80b72f49022100a7f76bde06369917c214ee2179e583fefb63c95bf876eb54d05dfdf0721ed772014104e6aa2cf108e1c650e12d8dd7ec0a36e478dad5a5d180585d25c30eb7c88c3df0c6f5fd41b3e70b019b777abd02d319bf724de184001b3d014cb740cb83ed21a6ffffffffbaae89b5d2e3ca78fd3f13cf0058784e7c089fb56e1e596d70adcfa486603967010000008b483045022055efbaddb4c67c1f1a46464c8f770aab03d6b513779ad48735d16d4c5b9907c2022100f469d50a5e5556fc2c932645f6927ac416aa65bc83d58b888b82c3220e1f0b73014104194b3f8aa08b96cae19b14bd6c32a92364bea3051cb9f018b03e3f09a57208ff058f4b41ebf96b9911066aef3be22391ac59175257af0984d1432acb8f2aefcaffffffff0340420f00000000001976a914c0fbb13eb10b57daa78b47660a4ffb79c29e2e6b88ac204e0000000000001976a9142cae94ffdc05f8214ccb2b697861c9c07e3948ee88ac1c2e0100000000001976a9146e03561cd4d6033456cc9036d409d2bf82721e9888ac00000000",
+          "transactionId": "38d4cfeb57d6685753b7a3b3534c3cb576c34ca7344cd4582f9613ebf0c2b02a",
+          "isCoinbase": false,
+          "block": {
+            "blockId": "0000000000000000119fe3f65fd3038cbe8429ad2cf7c2de1e5e7481b34a01b4",
+            "blockHeader": "02000000e47f1a9efc2b9718332c6b24a34794ddeea16f72b85ef81900000000000000001af4b7a2bd242d999754b687fe81b8aaef152d629167644e251af3c42a13fbbc4063485473691f181056140e",
+            "height": 326551,
+            "confirmations": 25300
+          },
+          "spentCoins": [
+            {
+              "transactionId": "95dabb349946fd8b04a12c1a3ea0a7acb8d8985c0cd628b47883d442b0102c36",
+              "index": 1,
+              "value": 800000,
+              "scriptPubKey": "76a914664e81d2e8e5d76314fa83b3111d706bd444e29288ac",
+              "redeemScript": null
+            },
+            {
+              "transactionId": "13481c33884344e5ac1bf55ff36ed5c27359530ee2c56c52675ce14aa52995c1",
+              "index": 0,
+              "value": 220000,
+              "scriptPubKey": "76a914d89f72913e7852882957af2bdc64ecbef95f71bf88ac",
+              "redeemScript": null
+            },
+            {
+              "transactionId": "67396086a4cfad706d591e6eb59f087c4e785800cf133ffd78cae3d2b589aeba",
+              "index": 1,
+              "value": 97340,
+              "scriptPubKey": "76a914a1a687e6d2476ff2ae8e00894e8be9a16906866388ac",
+              "redeemScript": null
+            }
+          ],
+          "fees": 20000
+        }
+
++ Response 200 (application/octet-stream)
+
+        0100000003362c10b042d48378b428d60c5c98d8b8aca7a03e1a2ca1048bfd469934bbda95010000008b483045022046c8bc9fb0e063e2fc8c6b1084afe6370461c16cbf67987d97df87827917d42d022100c807fa0ab95945a6e74c59838cc5f9e850714d8850cec4db1e7f3bcf71d5f5ef0141044450af01b4cc0d45207bddfb47911744d01f768d23686e9ac784162a5b3a15bc01e6653310bdd695d8c35d22e9bb457563f8de116ecafea27a0ec831e4a3e9feffffffffc19529a54ae15c67526cc5e20e535973c2d56ef35ff51bace5444388331c4813000000008b48304502201738185959373f04cc73dbbb1d061623d51dc40aac0220df56dabb9b80b72f49022100a7f76bde06369917c214ee2179e583fefb63c95bf876eb54d05dfdf0721ed772014104e6aa2cf108e1c650e12d8dd7ec0a36e478dad5a5d180585d25c30eb7c88c3df0c6f5fd41b3e70b019b777abd02d319bf724de184001b3d014cb740cb83ed21a6ffffffffbaae89b5d2e3ca78fd3f13cf0058784e7c089fb56e1e596d70adcfa486603967010000008b483045022055efbaddb4c67c1f1a46464c8f770aab03d6b513779ad48735d16d4c5b9907c2022100f469d50a5e5556fc2c932645f6927ac416aa65bc83d58b888b82c3220e1f0b73014104194b3f8aa08b96cae19b14bd6c32a92364bea3051cb9f018b03e3f09a57208ff058f4b41ebf96b9911066aef3be22391ac59175257af0984d1432acb8f2aefcaffffffff0340420f00000000001976a914c0fbb13eb10b57daa78b47660a4ffb79c29e2e6b88ac204e0000000000001976a9142cae94ffdc05f8214ccb2b697861c9c07e3948ee88ac1c2e0100000000001976a9146e03561cd4d6033456cc9036d409d2bf82721e9888ac00000000
+
++ Response 404
+
+# Group Blocks
+
+As transactions, getting a block in json will not parse it, but will return an hex string, along with some additional informations. (like confirmation count)
+Requests make use of blockFeatures, which is a mini language to select a block, for example :
+
+* 000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943 will return the block with the specified hash
+* 123 will return the block 123
+* tip will return the last block
+
+You can use an offset along with the previous selectors :
+
+* tip-1 will return the before the last block
+* 000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943 + 1 will return the block after one with the specified hash
+
+## Retrieve block information [/blocks/{blockFeature}?format={format}&headerOnly={headerOnly}]
+
+### GET [GET]
+
++ Parameters
+    + blockFeature ... Selected block
+    + format (enum) ... Raw or Json
+    + headerOnly (bool) ... Remove the block body from the response
+
++ Response 200 (application/json)
+
+        {
+          "additionalInformation": {
+            "blockId": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+            "blockHeader": "0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c",
+            "height": 0,
+            "confirmations": 351858
+          },
+          "block": "0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c0101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000"
+        }
+
++ Response 200 (application/octet-stream)
+
+        0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ff
+        
++ Response 404
+
+## Parse header information [/blocks/{blockFeature}/header]
+
+### GET [GET]
+
++ Parameters
+    + blockFeature ... Selected block
+
++ Response 200 (application/js)
+
+        {
+          "version": "2",
+          "hash": "000000004b4d173ff9f5b16c9e3078d38db89943ff4f7b350e44afe7d0b76c68",
+          "previous": "00000000838e3176adc5425b7906de0202509f3a08cb830c0ba82932be46861a",
+          "time": "2015-04-13T00:49:33+00:00",
+          "nonce": 1077363840,
+          "hashMerkelRoot": "89ad5ce4832e8222b2352e0d1c8146596f78ee23db45abfaf6202196c590db91",
+          "bits": "00000000ffff0000000000000000000000000000000000000000000000000000",
+          "difficulty": 1.0
+        }
+
+#Group Address Balances
+
+## Get Balance Operations [/balances/{address}?from={blockFeature}&until={blockFeature}&includeImmature={includeImmature}&unspentOnly={unspentOnly}&colored={colored}&continuation={continuation}]
+
+Returns balance operations from highest block to lowest one.
+
+### GET [GET]
+
++ Parameters
+    + address (wif) ... Bitcoin Address, colored or not.
+    + from (blockFeature) ... Enumerate operation starting from this block (included, default : tip)
+    + until    (blockFeature) ... Stop enumeration after this block (included, default : 0)
+    + includeImmature (bool) ... Enumerate operations containing immature coins, ie, coming from coinbase with less than 101 confirmations (default : false)
+    + unspentOnly   (bool)  ...  Enumerate only operations with unspent coins (default : false)
+    + colored   (bool)  ... Force colored coin balances (default : true if address is colored, false if not)
+    + continuation (string) ... If the response is too big to be requested into 30 seconds, the response will provide a continuation token to get the remaining operations
+    
++ Response 200 (application/json)
+    
+        {
+            "continuation": null,
+            {
+              "amount": -10000,
+              "confirmations": 3288,
+              "height": 348870,
+              "blockId": "00000000000000000c6f3b126028ca79800b69f0e39641b4620e746022072731",
+              "transactionId": "05daee6e36f068c8d4c49d2a0d2962bce8104c03d5ad49164cd5efb1f1dfba93",
+              "receivedCoins": [
+                {
+                  "transactionId": "05daee6e36f068c8d4c49d2a0d2962bce8104c03d5ad49164cd5efb1f1dfba93",
+                  "index": 0,
+                  "value": 4385000,
+                  "scriptPubKey": "76a914356facdac5f5bcae995d13e667bb5864fd1e7d5988ac",
+                  "redeemScript": null
+                }
+              ],
+              "spentCoins": [
+                {
+                  "transactionId": "738e056dc129673c624e21594084e3564969fe1b9c3aadfcf834433588c83920",
+                  "index": 0,
+                  "value": 4395000,
+                  "scriptPubKey": "76a914356facdac5f5bcae995d13e667bb5864fd1e7d5988ac",
+                  "redeemScript": null
+                }
+              ]
+            },
+            {
+              "amount": -10000,
+              "confirmations": 3290,
+              "height": 348868,
+              "blockId": "0000000000000000102ab470383bdcbb421b33527d4d6244e0239ac131f20934",
+              "transactionId": "738e056dc129673c624e21594084e3564969fe1b9c3aadfcf834433588c83920",
+              "receivedCoins": [
+                {
+                  "transactionId": "738e056dc129673c624e21594084e3564969fe1b9c3aadfcf834433588c83920",
+                  "index": 0,
+                  "value": 4395000,
+                  "scriptPubKey": "76a914356facdac5f5bcae995d13e667bb5864fd1e7d5988ac",
+                  "redeemScript": null
+                }
+              ],
+              "spentCoins": [
+                {
+                  "transactionId": "b1cc7a464d29d85bfbebb3219e23136bbb0d0a70063e01ad23fb0bc7bf771bb1",
+                  "index": 0,
+                  "value": 4405000,
+                  "scriptPubKey": "76a914356facdac5f5bcae995d13e667bb5864fd1e7d5988ac",
+                  "redeemScript": null
+                }
+              ]
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+          "continuation": null,
+          "operations": [
+            {
+              "amount": 0,
+              "confirmations": 18276,
+              "height": 333882,
+              "blockId": "0000000000000000195aa132dbd982e4a395c7bd36d18a19df24b720176d2e77",
+              "transactionId": "bd3a8fe0f2690f7d28135f5b359d24864c2cdb6f73cbc64366de5c03ad4341a4",
+              "receivedCoins": [
+                {
+                  "transactionId": "bd3a8fe0f2690f7d28135f5b359d24864c2cdb6f73cbc64366de5c03ad4341a4",
+                  "index": 6,
+                  "value": 600,
+                  "scriptPubKey": "76a9142350ac11435e641ac92790ba5b229e8b10dcffea88ac",
+                  "redeemScript": null,
+                  "assetId": "ARZFtqEzUp1zirGCcCRCRDyu7M5GDEhAFC",
+                  "quantity": 4266
+                }
+              ],
+              "spentCoins": []
+            },
+            {
+              "amount": 0,
+              "confirmations": 43575,
+              "height": 308583,
+              "blockId": "000000000000000013ac86cb2c0ffa152d6f368b2eeef6b23b3092b44a247e5a",
+              "transactionId": "12de655eba6c99fa40c01027336b29cbf05ca7c71a2e384e512d407fe8216b3f",
+              "receivedCoins": [
+                {
+                  "transactionId": "12de655eba6c99fa40c01027336b29cbf05ca7c71a2e384e512d407fe8216b3f",
+                  "index": 1,
+                  "value": 600,
+                  "scriptPubKey": "76a9142350ac11435e641ac92790ba5b229e8b10dcffea88ac",
+                  "redeemScript": null,
+                  "assetId": "AcK34dsaCqKV94Ges4t4RFRsxWhrAwZoX8",
+                  "quantity": 128
+                }
+              ],
+              "spentCoins": []
+            }
+        }
+        
+## Get Balance Summary [/balances/{address}/summary?at={blockFeature}&colored={colored}]
+
+Returns a summary of assets of an address
+* unConfirmed is a summary of unconfirmed transactions.
+* confirmed is a summary of confirmed transactions
+* spendable is the addition of confirmed and unConfirmed
+* immature is coinbase transactions with less than 101 confirmations
+
+Getting a balance summary is only eventually constant in time. It will timeout for addresses with more than 10 000 transactions.
+If it happens, load the balance summary incrementially by querying "/balances/{address}/tip-100000", then tip-90000, then tip-80000, etc... until tip.
+Once the summary is calculated, all future requests will be immediate.
+
+### GET [GET]
+
++ Parameters
+    + address (wif) ... Bitcoin Address, colored or not.
+    + at (blockFeature) ... Summary at specified block (default : tip)
+    + colored   (bool)  ... Force colored coin balances (default : true if address is colored, false if not)
+    
++ Response 200 (application/json)
+
+        {
+          "unConfirmed": {
+            "transactionCount": 0,
+            "amount": 0,
+            "received": 0
+          },
+          "confirmed": {
+            "transactionCount": 76,
+            "amount": 83197427,
+            "received": 120798262
+          },
+          "spendable": {
+            "transactionCount": 76,
+            "amount": 83197427,
+            "received": 120798262
+          },
+          "immature": {
+            "transactionCount": 0,
+            "amount": 0,
+            "received": 0
+          }
+        }
+
++ Response 200 (application/json)
+
+        {
+          "unConfirmed": {
+            "transactionCount": 0,
+            "amount": 0,
+            "received": 0,
+            "assets": []
+          },
+          "confirmed": {
+            "transactionCount": 4,
+            "amount": 0,
+            "received": 20000000,
+            "assets": [
+              {
+                "asset": "ARZFtqEzUp1zirGCcCRCRDyu7M5GDEhAFC",
+                "quantity": 4266,
+                "received": 4266
+              },
+              {
+                "asset": "AcK34dsaCqKV94Ges4t4RFRsxWhrAwZoX8",
+                "quantity": 128,
+                "received": 128
+              }
+            ]
+          },
+          "spendable": {
+            "transactionCount": 4,
+            "amount": 0,
+            "received": 20000000,
+            "assets": [
+              {
+                "asset": "ARZFtqEzUp1zirGCcCRCRDyu7M5GDEhAFC",
+                "quantity": 4266,
+                "received": 4266
+              },
+              {
+                "asset": "AcK34dsaCqKV94Ges4t4RFRsxWhrAwZoX8",
+                "quantity": 128,
+                "received": 128
+              }
+            ]
+          },
+          "immature": {
+            "transactionCount": 0,
+            "amount": 0,
+            "received": 0,
+            "assets": []
+          }
+        }
+
+#Group Wallets
+
+In Qbit Ninja terminology, a wallet is only a balance that span several addresses. QBit Ninja does not store any private key.
+
+You can either add those addresses manually, or generate them with "keysets". The only keyset type available for now is the BIP32 (HD) keyset.
+
+## Create a Wallet [/wallets]
+
+### POST [POST]
+
++ Request (application/json)
+
+        {
+            name : "mywallet"
+        }
+
++ Response 200 (application/json)
+
+        {
+            name : "mywallet"
+        }    
+
++ Response 400 (application/json)
+
+        {
+            statusCode : 400,
+            message : "Invalid wallet name"
+        }
+        
++ Response 409 (application/json)
+
+        {
+            statusCode : 409,
+            message : "wallet already exists"
+        }
+
+## Retrieve or add addresses [/wallets/{walletName}/addresses]
+
+### Add an address [POST]
+
++ Parameters
+    + walletName (string) ... The selected wallet
+
++ Request (application/json)
+        
+        {
+            mergePast : true, //will merge past operations to this wallet (to do only for small addresses < 10 000 transactions)
+            address : "1WIJifoeeI...", //Address in wif
+            redeemScript : "f34e....",  //Redeem script in hex (optional)
+            userData : "data that will be attached to coins belonging to this address (any json)"
+        }
+
++ Response 200 (application/json)
+
+        {
+            address : "1WIJifoeeI...", //Address in wif
+            redeemScript : "f34e....",  //Redeem script in hex (optional)
+            addtionalInformation :  {
+                    userData : "data that will be attached to coins belonging to this address (any json)",
+                }
+        }
+
+### Retrieve addresses [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                address : "1WIJifoeeI...", //Address in wif
+                redeemScript : "f34e....",  //Redeem script in hex (optional)
+                addtionalInformation :  {
+                    userData : "data that will be attached to coins belonging to this address (any json)",
+                    keysetData : {
+                        keySet : { ... }, //Keyset that generated this address
+                        state : { ... } //State of the keyset when it generated this address
+                    }
+                }
+            }
+        ]
+
+## Create a keyset [/wallets/{walletName}/keysets]
+
+Keysets are object stored into a wallet whose purpose is to generate a new address in the wallet, currently only BIP32 keysets are supported.
+
+### POST [POST]
+
++ Request (application/json)
+
+        {
+          "name": "Multi",
+          "extPubKeys": [
+            "tpubD6NzVbkrYhZ4WQtwCPwGUCTfewQyCN1BNS6LCP8qzRC9XK2x5aWaHWYx9CbWcyWwpPc2Sj1xrsLG1tWsanJMYiBj1YmgV9YY3j3X2g5byfp",
+            "tpubD6NzVbkrYhZ4YDRtYZNKG4VErUVoKdtDVewVgVWdm8WXauqNX3wwJFbTgWWqCEhaMLTogg1kmhxLBBbWj9joNWQuTxmyc4DZXBHRrP5BsUP"
+          ],
+          "signatureCount": 1,
+          "path": "1/2/3"
+        }
+        
++ Response 200 (application/json)
+
+        {
+          "name": "Multi",
+          "extPubKeys": [
+            "tpubD6NzVbkrYhZ4WQtwCPwGUCTfewQyCN1BNS6LCP8qzRC9XK2x5aWaHWYx9CbWcyWwpPc2Sj1xrsLG1tWsanJMYiBj1YmgV9YY3j3X2g5byfp",
+            "tpubD6NzVbkrYhZ4YDRtYZNKG4VErUVoKdtDVewVgVWdm8WXauqNX3wwJFbTgWWqCEhaMLTogg1kmhxLBBbWj9joNWQuTxmyc4DZXBHRrP5BsUP"
+          ],
+          "signatureCount": 1,
+          "path": "1/2/3"
+        }
+
+## Generate a new address from keyset [/wallets/{walletName}/keysets/{keysetName}/keys]
+
+### POST [POST]
+
++ Response 200 (application/json)
+
+        {
+          "path": "1/2/3/0",
+          "address": "2NDX7Qe5kaFtEXXEbuCVj5t9ayXeXgSqYxf",
+          "extPubKeys": [
+            "tpubDFf57NgxnzDCLkmfFYTstRyuuQxk9od7FoPhq9sj7kcTJLeijuCSiVubFRx15GtUP9aufHXCYdzmAC1VFhH3wbKN5BhcWuwpKBFxDxKUL19",
+            "tpubDErey6tnZDdeKAQfVHLvPmeMRE8KP93Hrm31thQu2ux9gWPmVfd6Uqop2kawveLBSnxgq5xsNqBeorRRP21N6DrDxvY9ZbHyE5EsK8KQNh2"
+          ],
+          "redeemScript": "5121022ce45f27241477ba23680836bf9fb44e66b57296c462f999d146f6f02a11fdd4210230998116d782a94205ebdd96b5f7a53308a0e3227d367185d14e6d8de83809f752ae",
+          "scriptPubKey": "a914de63ada536bb0f6a3b6d680936d1289dd24a7d5487"
+        }
+
+## Get Wallet balance operations [/wallets/{walletName}/balance?from={blockFeature}&until={blockFeature}&includeImmature={includeImmature}&unspentOnly={unspentOnly}&colored={colored}&continuation={continuation}]
+
+The parameters and response are similar to simple address's balance.
+Returns balance operations from highest block to lowest one.
+
+### GET [GET]
+
++ Parameters
+    + balance (string) ... The wallet name
+    + from (blockFeature) ... Enumerate operation starting from this block (included, default : tip)
+    + until    (blockFeature) ... Stop enumeration after this block (included, default : 0)
+    + includeImmature (bool) ... Enumerate operations containing immature coins, ie, coming from coinbase with less than 101 confirmations (default : false)
+    + unspentOnly   (bool)  ...  Enumerate only operations with unspent coins (default : false)
+    + colored   (bool)  ... Force colored coin balances (default : true if address is colored, false if not)
+    + continuation (string) ... If the response is too big to be requested into 30 seconds, the response will provide a continuation token to get the remaining operations
+    
++ Response 200 (application/json)
+    
+        {
+            "continuation": null,
+            {
+              "amount": -10000,
+              "confirmations": 3288,
+              "height": 348870,
+              "blockId": "00000000000000000c6f3b126028ca79800b69f0e39641b4620e746022072731",
+              "transactionId": "05daee6e36f068c8d4c49d2a0d2962bce8104c03d5ad49164cd5efb1f1dfba93",
+              "receivedCoins": [
+                {
+                  "transactionId": "05daee6e36f068c8d4c49d2a0d2962bce8104c03d5ad49164cd5efb1f1dfba93",
+                  "index": 0,
+                  "value": 4385000,
+                  "scriptPubKey": "76a914356facdac5f5bcae995d13e667bb5864fd1e7d5988ac",
+                  "redeemScript": null
+                }
+              ],
+              "spentCoins": [
+                {
+                  "transactionId": "738e056dc129673c624e21594084e3564969fe1b9c3aadfcf834433588c83920",
+                  "index": 0,
+                  "value": 4395000,
+                  "scriptPubKey": "76a914356facdac5f5bcae995d13e667bb5864fd1e7d5988ac",
+                  "redeemScript": null
+                }
+              ]
+            },
+            {
+              "amount": -10000,
+              "confirmations": 3290,
+              "height": 348868,
+              "blockId": "0000000000000000102ab470383bdcbb421b33527d4d6244e0239ac131f20934",
+              "transactionId": "738e056dc129673c624e21594084e3564969fe1b9c3aadfcf834433588c83920",
+              "receivedCoins": [
+                {
+                  "transactionId": "738e056dc129673c624e21594084e3564969fe1b9c3aadfcf834433588c83920",
+                  "index": 0,
+                  "value": 4395000,
+                  "scriptPubKey": "76a914356facdac5f5bcae995d13e667bb5864fd1e7d5988ac",
+                  "redeemScript": null
+                }
+              ],
+              "spentCoins": [
+                {
+                  "transactionId": "b1cc7a464d29d85bfbebb3219e23136bbb0d0a70063e01ad23fb0bc7bf771bb1",
+                  "index": 0,
+                  "value": 4405000,
+                  "scriptPubKey": "76a914356facdac5f5bcae995d13e667bb5864fd1e7d5988ac",
+                  "redeemScript": null
+                }
+              ]
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+          "continuation": null,
+          "operations": [
+            {
+              "amount": 0,
+              "confirmations": 18276,
+              "height": 333882,
+              "blockId": "0000000000000000195aa132dbd982e4a395c7bd36d18a19df24b720176d2e77",
+              "transactionId": "bd3a8fe0f2690f7d28135f5b359d24864c2cdb6f73cbc64366de5c03ad4341a4",
+              "receivedCoins": [
+                {
+                  "transactionId": "bd3a8fe0f2690f7d28135f5b359d24864c2cdb6f73cbc64366de5c03ad4341a4",
+                  "index": 6,
+                  "value": 600,
+                  "scriptPubKey": "76a9142350ac11435e641ac92790ba5b229e8b10dcffea88ac",
+                  "redeemScript": null,
+                  "assetId": "ARZFtqEzUp1zirGCcCRCRDyu7M5GDEhAFC",
+                  "quantity": 4266
+                }
+              ],
+              "spentCoins": []
+            },
+            {
+              "amount": 0,
+              "confirmations": 43575,
+              "height": 308583,
+              "blockId": "000000000000000013ac86cb2c0ffa152d6f368b2eeef6b23b3092b44a247e5a",
+              "transactionId": "12de655eba6c99fa40c01027336b29cbf05ca7c71a2e384e512d407fe8216b3f",
+              "receivedCoins": [
+                {
+                  "transactionId": "12de655eba6c99fa40c01027336b29cbf05ca7c71a2e384e512d407fe8216b3f",
+                  "index": 1,
+                  "value": 600,
+                  "scriptPubKey": "76a9142350ac11435e641ac92790ba5b229e8b10dcffea88ac",
+                  "redeemScript": null,
+                  "assetId": "AcK34dsaCqKV94Ges4t4RFRsxWhrAwZoX8",
+                  "quantity": 128
+                }
+              ],
+              "spentCoins": []
+            }
+        }
+        
+## Get Balance Summary [/wallets/{walletName}/summary?at={blockFeature}&colored={colored}]
+
+### GET [GET]
+
++ Parameters
+    + walletName (string) ... Bitcoin Address, colored or not.
+    + at (blockFeature) ... Summary at specified block (default : tip)
+    + colored   (bool)  ... Force colored coin balances (default : false)
+    
++ Response 200 (application/json)
+
+        {
+          "unConfirmed": {
+            "transactionCount": 0,
+            "amount": 0,
+            "received": 0
+          },
+          "confirmed": {
+            "transactionCount": 76,
+            "amount": 83197427,
+            "received": 120798262
+          },
+          "spendable": {
+            "transactionCount": 76,
+            "amount": 83197427,
+            "received": 120798262
+          },
+          "immature": {
+            "transactionCount": 0,
+            "amount": 0,
+            "received": 0
+          }
+        }
+
++ Response 200 (application/json)
+
+        {
+          "unConfirmed": {
+            "transactionCount": 0,
+            "amount": 0,
+            "received": 0,
+            "assets": []
+          },
+          "confirmed": {
+            "transactionCount": 4,
+            "amount": 0,
+            "received": 20000000,
+            "assets": [
+              {
+                "asset": "ARZFtqEzUp1zirGCcCRCRDyu7M5GDEhAFC",
+                "quantity": 4266,
+                "received": 4266
+              },
+              {
+                "asset": "AcK34dsaCqKV94Ges4t4RFRsxWhrAwZoX8",
+                "quantity": 128,
+                "received": 128
+              }
+            ]
+          },
+          "spendable": {
+            "transactionCount": 4,
+            "amount": 0,
+            "received": 20000000,
+            "assets": [
+              {
+                "asset": "ARZFtqEzUp1zirGCcCRCRDyu7M5GDEhAFC",
+                "quantity": 4266,
+                "received": 4266
+              },
+              {
+                "asset": "AcK34dsaCqKV94Ges4t4RFRsxWhrAwZoX8",
+                "quantity": 128,
+                "received": 128
+              }
+            ]
+          },
+          "immature": {
+            "transactionCount": 0,
+            "amount": 0,
+            "received": 0,
+            "assets": []
+          }
+        }
